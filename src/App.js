@@ -14,7 +14,7 @@ function App() {
       return response.json();
     })
     .then(data => {
-      //console.log(data)
+      console.log(data)
       setNews(data.articles)
     })
     .catch(error => console.log(error))
@@ -31,18 +31,25 @@ function App() {
   };
   const callSearch = e =>{
     e.preventDefault();
-    setApiUrl(`https://gnews.io/api/v4/search?q=${searchWord}&token=f9e111081543a12f2bb5a933bac85765`)  
+    setApiUrl(`https://gnews.io/api/v4/search?q=${searchWord}&token=f9e111081543a12f2bb5a933bac85765`)
+    
   }
 
   return (
-    <div className="App">
-          
+    <div className="App">          
           <form onSubmit={callSearch}>
             <input type="text" value={searchWord} onChange={callApi}/>
             <button>Search News</button>
           </form>
+          {<h1>News about {searchWord}</h1>}  
           {news.map( (n,i) =>(
-            <h3 key={i}>{n.title}</h3>
+            <div key={i}>              
+              <a href={n.url}>
+                <h3>{n.title}</h3>
+                <img src={n.image} alt={n.description} width={500} height={300}/>
+              </a>
+              
+            </div>
           ))
           }
     </div>

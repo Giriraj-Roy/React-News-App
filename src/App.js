@@ -61,10 +61,29 @@ function App() {
           {<h1>News about {searchWord}</h1>}  
           {news.map( (n,i) =>(
             <div key={i}>              
-              <a href={n.url}>
-                <h3>{n.title}</h3>
-                <img src={n.image} alt={n.description} width={500} height={300}/>
-              </a>
+              {/* <a href={n.url}> */}
+                {/* <h3>{n.title}</h3> */}
+                {/* <img src={n.image} alt={n.description} width={500} height={300}/> */}
+                <div className="ui fluid card">
+                  <div className="image">
+                    <a href={n.url}>
+                      <img src={n.image} alt={n.description} width={500}/>
+                    </a>
+                  </div>
+                  <div className="content">
+                    <div className="header">
+                      {n.source.name}
+                    </div>
+                    <div className="meta">
+                      <span className="date">{n.publishedAt}</span>
+                    </div>
+                    <div className="description">
+                      {n.description}
+                    </div>
+                  </div>
+                  <div className="extra content"><a><i aria-hidden="true" className="user icon"></i>{n.content}</a></div>
+                </div>
+              {/* </a> */}
               
             </div>
           ))
@@ -74,3 +93,6 @@ function App() {
 }
 
 export default App;
+
+
+

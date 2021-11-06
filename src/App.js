@@ -1,4 +1,6 @@
 import  React, { useEffect, useState } from 'react';
+//import 'semantic-ui-react';
+//import 'semantic-ui-css';
 
 
 function App() {
@@ -38,8 +40,23 @@ function App() {
   return (
     <div className="App">          
           <form onSubmit={callSearch}>
-            <input type="text" value={searchWord} onChange={callApi}/>
-            <button>Search News</button>
+            {/* <input type="text" value={searchWord} onChange={callApi}/> */}
+            <div className="ui focus input">
+              <input type="text" placeholder="Search..." value={searchWord} onChange={callApi}/>
+                {/* <i aria-hidden="true" class="user icon"/> */}
+            </div>
+
+            {/* <button>Search News</button> */}
+              <button className="ui animated button">
+                <div className="visible content">
+                  Search News
+                </div>
+                <div className="hidden content">
+                  {/* <i aria-hidden="true" className="arrow right icon"></i>*/}
+                  Let's Go
+                </div>
+              </button>
+            
           </form>
           {<h1>News about {searchWord}</h1>}  
           {news.map( (n,i) =>(
